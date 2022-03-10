@@ -1,6 +1,7 @@
 <form [formGroup]="battleForm" (ngSubmit)="onSubmit(battleForm.value)" class="form-main">
   <mat-stepper>
-    <!--Step 1-->
+    <!--General Client Info-->
+    <!--Add form validation to form.component.ts-->
 
     <mat-step>
       <ng-template matStepLabel>General Info</ng-template>
@@ -19,6 +20,7 @@
       <br />
 
       <!-- Parse / split ages by commas-->
+      <!-- 18+ && !0 -->
       <mat-form-field appearance="fill">
         <input
           matInput
@@ -66,7 +68,7 @@
       <br/>
 
 
-      <!-- Optional
+      <!-- Optional - Host State returns an array of country states defined in hostCountries interface
     <mat-form-field appearance="fill">
       <mat-label>Host State</mat-label>
       <mat-select
@@ -90,7 +92,7 @@
 
     </mat-step>
 
-    <!--Step 2-->
+    <!--Trip Details-->
 
     <mat-step>
       <ng-template matStepLabel>Trip Details</ng-template>
@@ -130,7 +132,7 @@
 
     </mat-step>
 
-    <!--Step 3-->
+    <!--Get Quote-->
 
     <mat-step>
       <ng-template matStepLabel>Get Quote</ng-template>
@@ -168,7 +170,6 @@
       <mat-select
           matInput
           id="winter_sports_extension"
-          type="boolean"
           placeholder="Winter Sports Extension"
           required
           formControlName="winter_sports_extension">
@@ -180,8 +181,8 @@
       <br/>
 
 
+<!--To-Do: Fix click / button events so form only submits onSubmit()-->
     <button mat-stroked-button type="submit">Submit</button>
-
 
     </mat-step>
 

@@ -43,17 +43,19 @@ export class QuotationService {
 
   // GET Allowed Currencies - country ID needs to replace blank in URL
   private currencyUrl =
-    'https://coding-challenge-api.bfdevsite.com/api/v1/token/product/8/country/<country_id>/currencies';
+    'https://coding-challenge-api.bfdevsite.com/api/v1/token/product/8/country/country_id/currencies';
 
   getCurrencies(): Observable<Currencies[]> {
     return this.http.get<Currencies[]>(this.currencyUrl, this.httpOptions);
   }
 
   // POST Client Form
-  // .map the returned Client Form with their input and generated Quote from Server
+  // .map the returned Client Form with their input and generated Quote from API
   private quoteUrl =
     'https://coding-challenge-api.bfdevsite.com/api/v1/token/quotation';
 
+  // 406 ERROR: "authorization header not provided or header has an incorrect format."
+  // Screenshot of error located in assets folder
   submitForm(formData: ClientForm[]): Observable<ClientForm[]> {
     return this.http.post<ClientForm[]>(
       this.quoteUrl,
