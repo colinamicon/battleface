@@ -1,1 +1,188 @@
-<p>form works!</p>
+<form [formGroup]="battleForm" (ngSubmit)="onSubmit()" class="form-main">
+  <mat-stepper>
+    <!--Step 1-->
+
+    <mat-step>
+      <ng-template matStepLabel>General Info</ng-template>
+
+      <mat-form-field appearance="fill">
+        <input
+          matInput
+          id="product_id"
+          type="number"
+          placeholder="Product ID: 8"
+          required
+          formControlName="product_id"
+        />
+      </mat-form-field>
+
+      <br />
+
+      <!-- Parse ages by commas-->
+      <mat-form-field appearance="fill">
+        <input
+          matInput
+          id="age"
+          type="text"
+          placeholder="Age"
+          required
+          formControlName="age"
+        />
+      </mat-form-field>
+
+      <br />
+
+      <mat-form-field appearance="fill">
+        <input
+          matInput
+          id="currency_id"
+          type="text"
+          placeholder="Currency ID"
+          required
+          formControlName="currency_id"
+        />
+      </mat-form-field>
+
+      <br />
+
+
+     <mat-form-field appearance="fill">
+      <mat-label>Host Country Name</mat-label>
+      <mat-select
+          matInput
+          id="host_country_id"
+          type="text"
+          placeholder="Host Country ID"
+          required
+          formControlName="host_country_id">
+        <mat-option
+          *ngFor="let host of hostCountries"
+          [value]="host.name">
+          {{ host.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+      <br/>
+
+
+      <!-- Optional
+    <mat-form-field appearance="fill">
+      <mat-label>Host State</mat-label>
+      <mat-select
+          matInput
+          id="country_state"
+          type="text"
+          placeholder="Country State"
+          required
+          formControlName="country_state">
+        <mat-option
+          *ngFor="let host of hostCountries"
+          [value]="host.country_states">
+          {{ host.country_states }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field> -->
+
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+
+    </mat-step>
+
+    <!--Step 2-->
+
+    <mat-step>
+      <ng-template matStepLabel>Trip Details</ng-template>
+
+      <p>Start Date</p>
+      <mat-form-field appearance="fill">
+        <input
+          matInput
+          id="start_date"
+          type="date"
+          placeholder="Start Date"
+          required
+          formControlName="start_date"
+        />
+      </mat-form-field>
+
+      <br />
+
+      <p>End Date</p>
+      <mat-form-field appearance="fill">
+        <input
+          matInput
+          id="end_date"
+          type="date"
+          placeholder="End Date"
+          required
+          formControlName="end_date"
+        />
+      </mat-form-field>
+
+      <br />
+
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+
+    </mat-step>
+
+    <!--Step 3-->
+
+    <mat-step>
+      <ng-template matStepLabel>Get Quote</ng-template>
+      <mat-form-field appearance="fill">
+        <input
+          matInput
+          id="trip_cost"
+          type="number"
+          placeholder="Trip Cost"
+          required
+          formControlName="trip_cost"
+        />
+      </mat-form-field>
+
+      <br />
+
+      <p>Deposit Date</p>
+      <mat-form-field appearance="fill">
+        <input
+          matInput
+          id="deposit_date"
+          type="date"
+          placeholder="Deposit Date"
+          required
+          formControlName="deposit_date"
+        />
+      </mat-form-field>
+
+      <br />
+
+
+      <mat-form-field appearance="fill">
+      <mat-label>Winter Sports Extension</mat-label>
+      <mat-select
+          matInput
+          id="winter_sports_extension"
+          type="boolean"
+          placeholder="Winter Sports Extension"
+          required
+          formControlName="winter_sports_extension">
+          <mat-option [value]="true">Yes</mat-option>
+          <mat-option [value]="false">No</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+      <br/>
+
+
+    <button mat-stroked-button type="submit">Submit</button>
+
+
+    </mat-step>
+
+  </mat-stepper>
+</form>

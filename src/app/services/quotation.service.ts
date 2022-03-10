@@ -4,6 +4,7 @@ import { map, Observable, tap } from 'rxjs';
 import { DestinationCountries } from '../interfaces/destination-countries';
 import { HostCountries } from '../interfaces/host-countries';
 import { Currencies } from '../interfaces/currencies';
+import { ClientForm } from '../interfaces/client-form';
 
 @Injectable({
   providedIn: 'root',
@@ -27,7 +28,9 @@ export class QuotationService {
 
   getDestinationCountries(): Observable<DestinationCountries[]> {
     return this.http.get<DestinationCountries[]>(
-      this.destinationUrl,this.httpOptions);
+      this.destinationUrl,
+      this.httpOptions
+    );
   }
 
   // GET Host Countries
@@ -46,7 +49,14 @@ export class QuotationService {
     return this.http.get<Currencies[]>(this.currencyUrl, this.httpOptions);
   }
 
-  // POST form
+  // POST Client Form
+  private quoteUrl =
+    'https://coding-challenge-api.bfdevsite.com/api/v1/token/quotation';
+
+  submitForm(formData: ClientForm): Observable<ClientForm> {
+    return this.http.post<ClientForm>(this.quoteUrl, formData, this.httpOptions)
+  }
+
 
   constructor(private http: HttpClient) {}
 }

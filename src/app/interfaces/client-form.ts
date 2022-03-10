@@ -1,6 +1,6 @@
 export interface ClientForm {
   product_id: string;
-  age: number;
+  age: string;
   currency_id: string;
   destination_country_ids: string;
   host_country_id: string;
