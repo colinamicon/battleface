@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ClientForm } from 'src/app/interfaces/client-form';
+import { Currencies } from 'src/app/interfaces/currencies';
 import { DestinationCountries } from 'src/app/interfaces/destination-countries';
 import { HostCountries } from 'src/app/interfaces/host-countries';
 import { QuotationService } from 'src/app/services/quotation.service';
@@ -15,6 +16,7 @@ export class FormComponent implements OnInit {
   clientForm: ClientForm[];
   destinationCountries: DestinationCountries[];
   hostCountries: HostCountries[];
+  currencies: Currencies[];
   battleForm: FormGroup;
 
   constructor(
@@ -52,6 +54,10 @@ export class FormComponent implements OnInit {
       .subscribe((data: HostCountries[]) => (this.hostCountries = data));
 
     // GET Currencies
+    this.quotationService
+      .getCurrencies()
+      .subscribe((data: Currencies[]) => (this.currencies = data));
+
   }
 
   ngOnChanges(): void {
@@ -61,9 +67,11 @@ export class FormComponent implements OnInit {
 
 
   onSubmit(formValues: ClientForm[]): void {
-    let formData: ClientForm[] = <ClientForm[]>formValues;
+    // log Client Form to console
+    console.log(this.battleForm.value);
 
     // Subscribe to Client Form POST onSubmit
+    let formData: ClientForm[] = <ClientForm[]>formValues;
     this.quotationService
       .submitForm(formData)
       .subscribe({ complete: console.info });

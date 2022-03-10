@@ -42,6 +42,7 @@ export class QuotationService {
   }
 
   // GET Allowed Currencies - country ID needs to replace blank in URL
+  // REMOVED brackets from <country_id>
   private currencyUrl =
     'https://coding-challenge-api.bfdevsite.com/api/v1/token/product/8/country/country_id/currencies';
 
