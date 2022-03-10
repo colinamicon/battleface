@@ -1,4 +1,4 @@
-<form [formGroup]="battleForm" (ngSubmit)="onSubmit()" class="form-main">
+<form [formGroup]="battleForm" (ngSubmit)="onSubmit(battleForm.value)" class="form-main">
   <mat-stepper>
     <!--Step 1-->
 

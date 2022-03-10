@@ -57,6 +57,5 @@ export class QuotationService {
     return this.http.post<ClientForm>(this.quoteUrl, formData, this.httpOptions)
   }
 
-
   constructor(private http: HttpClient) {}
 }

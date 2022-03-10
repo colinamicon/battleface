@@ -59,37 +59,15 @@ export class FormComponent implements OnInit {
     // GET Currencies
   }
 
-  onSubmit() {
-    // FormData.append
-    var formData: any = new FormData();
-    formData.append('product_id', this.battleForm.get('product_id').value);
-    formData.append('age', this.battleForm.get('age').value);
-    formData.append('currency_id', this.battleForm.get('currency_id').value);
-    formData.append(
-      'destination_country_ids',
-      this.battleForm.get('destination_country_ids').value
-    );
-    formData.append(
-      'host_country_id',
-      this.battleForm.get('host_country_id').value
-    );
-    formData.append(
-      'country_state',
-      this.battleForm.get('country_state').value
-    );
-    formData.append('trip_cost', this.battleForm.get('trip_cost').value);
-    formData.append('deposit_date', this.battleForm.get('deposit_date').value);
-    formData.append(
-      'winter_sports_extension',
-      this.battleForm.get('winter_sports_extension').value
-    );
+  onSubmit(formValues: any): void {
+    let formData: ClientForm = <ClientForm>formValues;
 
     // POST Client Form onSubmit
-    this.quotationService.submitForm(formData).subscribe(
-      (response) => console.log(response),
-      (error) => console.log(error)
+    this.quotationService.submitForm(formData)
+    .subscribe(
+      (data: ClientForm) => console.log(data),
+      //(err: any) => console.log(err)
     );
-
 
 }
 
