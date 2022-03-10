@@ -4,7 +4,6 @@ import { ClientForm } from 'src/app/interfaces/client-form';
 import { DestinationCountries } from 'src/app/interfaces/destination-countries';
 import { HostCountries } from 'src/app/interfaces/host-countries';
 import { QuotationService } from 'src/app/services/quotation.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-form',
@@ -21,7 +20,6 @@ export class FormComponent implements OnInit {
   constructor(
     private quotationService: QuotationService,
     private formBuilder: FormBuilder,
-    private http: HttpClient
   ) {
     // reactive form: battleForm (FormBuilder Constructor)
     this.battleForm = this.formBuilder.group({
@@ -49,29 +47,25 @@ export class FormComponent implements OnInit {
       );
 
     // GET Host Countries
-        this.quotationService
-          .getHostCountries()
-          .subscribe(
-            (data: HostCountries[]) => (this.hostCountries = data)
-          );
-
+    this.quotationService
+      .getHostCountries()
+      .subscribe((data: HostCountries[]) => (this.hostCountries = data));
 
     // GET Currencies
   }
 
-  onSubmit(formValues: any): void {
-    let formData: ClientForm = <ClientForm>formValues;
+  ngOnChanges(): void {
+    // .split(',') ages by commas
 
-    // POST Client Form onSubmit
-    this.quotationService.submitForm(formData)
-    .subscribe(
-      (data: ClientForm) => console.log(data),
-      //(err: any) => console.log(err)
-    );
+  }
 
+
+  onSubmit(formValues: ClientForm[]): void {
+    let formData: ClientForm[] = <ClientForm[]>formValues;
+
+    // Subscribe to Client Form POST onSubmit
+    this.quotationService
+      .submitForm(formData)
+      .subscribe({ complete: console.info });
+  }
 }
-
-}
-// http client - services
-
-// interface for each get / post request TYPE
