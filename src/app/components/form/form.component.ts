@@ -74,6 +74,7 @@ export class FormComponent implements OnInit {
     let formData: ClientForm[] = <ClientForm[]>formValues;
     this.quotationService
       .submitForm(formData)
-      .subscribe({ complete: console.info });
+      .subscribe({ error: console.error,
+      complete: console.info });
   }
 }
