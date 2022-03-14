@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map, Observable, tap } from 'rxjs';
+import { map, Observable, of, tap } from 'rxjs';
 import { DestinationCountries } from '../interfaces/destination-countries';
 import { HostCountries } from '../interfaces/host-countries';
 import { Currencies } from '../interfaces/currencies';
 import { ClientForm } from '../interfaces/client-form';
+import { Quote } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root',
@@ -55,14 +56,10 @@ export class QuotationService {
   private quoteUrl =
     'https://coding-challenge-api.bfdevsite.com/api/v1/token/quotation';
 
-  // 406 ERROR: "authorization header not provided or header has an incorrect format."
+  // 406 ERROR: "One or more inputs have been left empty."
   // Screenshot of error located in assets folder
-  submitForm(formData: ClientForm[]): Observable<ClientForm[]> {
-    return this.http.post<ClientForm[]>(
-      this.quoteUrl,
-      formData,
-      this.httpOptions
-    );
+  submitForm(formData: ClientForm): Observable<Quote> {
+    return this.http.post<Quote>(this.quoteUrl, formData, this.httpOptions);
   }
 
   constructor(private http: HttpClient) {}

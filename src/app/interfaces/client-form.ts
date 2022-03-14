@@ -1,5 +1,5 @@
 export interface ClientForm {
-  product_id: string;
+  product_id: number;
   age: string;
   currency_id: string;
   destination_country_ids: string;
@@ -10,12 +10,4 @@ export interface ClientForm {
   trip_cost: number;
   deposit_date: Date;
   winter_sports_extension: boolean;
-
-  // Response from POST
-  total: number;
-  premium: number;
-  tax: number;
-  fees: number;
-  return_url: string; // url
-  quotation_id: number;
 }

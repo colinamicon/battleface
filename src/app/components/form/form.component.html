@@ -19,7 +19,6 @@
 
       <br />
 
-      <!-- Parse / split ages by commas-->
       <!-- 18+ && !0 -->
       <mat-form-field appearance="fill">
         <input
@@ -29,6 +28,7 @@
           placeholder="Age"
           required
           formControlName="age"
+          (change)="agesChanged('age')"
         />
       </mat-form-field>
 
@@ -67,9 +67,8 @@
 
       <br/>
 
-
-      <!-- Optional - Host State returns an array of country states defined in hostCountries interface
-    <mat-form-field appearance="fill">
+      <!--Grouped *ngFor-->
+    <!-- <mat-form-field appearance="fill">
       <mat-label>Host State</mat-label>
       <mat-select
           matInput
@@ -79,9 +78,9 @@
           required
           formControlName="country_state">
         <mat-option
-          *ngFor="let host of hostCountries"
-          [value]="host.country_states">
-          {{ host.country_states }}
+          *ngFor="let state in host.name"
+          [value]="state.country_states">
+          {{ state.country_state }}
         </mat-option>
       </mat-select>
     </mat-form-field> -->
@@ -183,6 +182,37 @@
     <button mat-stroked-button type="submit">Submit</button>
 
 <!-- On Submit, display Client Form Data + Quote returned from API-->
+
+<table>
+  <thead>
+<td>
+  product_id
+</td>
+<td>
+  age
+</td>
+<td>
+  currency_id
+</td>
+  </thead>
+
+  <tr>
+    <td>
+      8
+    </td>
+
+    <td>
+      28
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      2
+    </td>
+  </tr>
+
+</table>
 
 
     </mat-step>
