@@ -197,6 +197,8 @@
 
         <!-- On Submit, display Client Form Data + Quote returned from API-->
 
+        <div class="quote-container">
+          <h1 *ngIf="show">BattleForm Quick Quote</h1>
         <table
           mat-table
           [dataSource]="dataSource"
@@ -256,6 +258,9 @@
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
         </table>
+
+        </div>
+
       </mat-step>
     </mat-stepper>
   </form>
