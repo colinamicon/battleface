@@ -77,7 +77,7 @@ export class FormComponent implements OnInit {
    * Fake Quote to simulate quotationService due to 406 Error
    * Http Post called onSubmit below
    */
-  displayedColumns = ['total', 'premium', 'tax', 'fees'];
+  displayedColumns = ['total', 'premium', 'tax', 'fees', 'currency_id', 'return_url', 'quotation_id'];
   fakeQuote: Quote[] = [
     {
       total: 28.43,

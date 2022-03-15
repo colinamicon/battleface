@@ -1,75 +1,77 @@
 <body class="form-body">
-  <form [formGroup]="battleForm" (ngSubmit)="onSubmit(battleForm.value)" class="form-main">
-  <mat-stepper>
-    <!--General Client Info-->
-    <!--Add form validation to form.component.ts-->
+  <form
+    [formGroup]="battleForm"
+    (ngSubmit)="onSubmit(battleForm.value)"
+    class="form-main"
+  >
+    <mat-stepper>
+      <!--General Client Info-->
+      <!--Add form validation to form.component.ts-->
 
-    <mat-step>
-      <ng-template matStepLabel>General Info</ng-template>
+      <mat-step>
+        <ng-template matStepLabel>General Info</ng-template>
 
-      <mat-form-field appearance="fill">
-        <input
-          matInput
-          id="product_id"
-          type="number"
-          placeholder="Product ID: 8"
-          required
-          formControlName="product_id"
-        />
-      </mat-form-field>
+        <mat-form-field appearance="fill">
+          <input
+            matInput
+            id="product_id"
+            type="number"
+            placeholder="Product ID: 8"
+            required
+            formControlName="product_id"
+          />
+        </mat-form-field>
 
-      <br />
+        <br />
 
-      <!-- 18+ && !0 -->
-      <mat-form-field appearance="fill">
-        <input
-          matInput
-          id="age"
-          type="text"
-          placeholder="Age"
-          required
-          formControlName="age"
-          (change)="agesChanged('age')"
-        />
-      </mat-form-field>
+        <!-- 18+ && !0 -->
+        <mat-form-field appearance="fill">
+          <input
+            matInput
+            id="age"
+            type="text"
+            placeholder="Age"
+            required
+            formControlName="age"
+            (change)="agesChanged('age')"
+          />
+        </mat-form-field>
 
-      <br />
+        <br />
 
-      <mat-form-field appearance="fill">
-        <input
-          matInput
-          id="currency_id"
-          type="text"
-          placeholder="Currency ID"
-          required
-          formControlName="currency_id"
-        />
-      </mat-form-field>
+        <mat-form-field appearance="fill">
+          <input
+            matInput
+            id="currency_id"
+            type="text"
+            placeholder="Currency ID"
+            required
+            formControlName="currency_id"
+          />
+        </mat-form-field>
 
-      <br />
+        <br />
 
+        <mat-form-field appearance="fill">
+          <mat-label>Host Country Name</mat-label>
+          <mat-select
+            matInput
+            id="host_country_id"
+            type="text"
+            placeholder="Host Country ID"
+            required
+            formControlName="host_country_id"
+          >
+            <mat-option *ngFor="let host of hostCountries" [value]="host.name">
+              {{ host.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
 
-     <mat-form-field appearance="fill">
-      <mat-label>Host Country Name</mat-label>
-      <mat-select
-          matInput
-          id="host_country_id"
-          type="text"
-          placeholder="Host Country ID"
-          required
-          formControlName="host_country_id">
-        <mat-option
-          *ngFor="let host of hostCountries"
-          [value]="host.name">
-          {{ host.name }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+        <br />
 
-      <br/>
-
-      <!--Grouped *ngFor-->
-    <!-- <mat-form-field appearance="fill">
+        <!--Grouped *ngFor-->
+        <!-- <mat-form-field appearance="fill">
       <mat-label>Host State</mat-label>
       <mat-select
           matInput
@@ -86,145 +88,172 @@
       </mat-select>
     </mat-form-field> -->
 
-      <div>
-        <button mat-button matStepperNext type="button">Next</button>
-      </div>
+        <div>
+          <button mat-stroked-button matStepperNext type="button">Next</button>
+        </div>
+      </mat-step>
 
-    </mat-step>
+      <!--Trip Details-->
 
-    <!--Trip Details-->
+      <mat-step>
+        <ng-template matStepLabel>Trip Details</ng-template>
 
-    <mat-step>
-      <ng-template matStepLabel>Trip Details</ng-template>
+        <p>Start Date</p>
+        <mat-form-field appearance="fill">
+          <input
+            matInput
+            id="start_date"
+            type="date"
+            placeholder="Start Date"
+            required
+            formControlName="start_date"
+          />
+        </mat-form-field>
 
-      <p>Start Date</p>
-      <mat-form-field appearance="fill">
-        <input
-          matInput
-          id="start_date"
-          type="date"
-          placeholder="Start Date"
-          required
-          formControlName="start_date"
-        />
-      </mat-form-field>
+        <br />
 
-      <br />
+        <p>End Date</p>
+        <mat-form-field appearance="fill">
+          <input
+            matInput
+            id="end_date"
+            type="date"
+            placeholder="End Date"
+            required
+            formControlName="end_date"
+          />
+        </mat-form-field>
 
-      <p>End Date</p>
-      <mat-form-field appearance="fill">
-        <input
-          matInput
-          id="end_date"
-          type="date"
-          placeholder="End Date"
-          required
-          formControlName="end_date"
-        />
-      </mat-form-field>
+        <br />
 
-      <br />
+        <div>
+          <button mat-stroked-button matStepperPrevious type="button">
+            Back
+          </button>
+          <button mat-stroked-button matStepperNext type="button">Next</button>
+        </div>
+      </mat-step>
 
-      <div>
-        <button mat-button matStepperPrevious type="button">Back</button>
-        <button mat-button matStepperNext type="button">Next</button>
-      </div>
+      <!--Get Quote-->
 
-    </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Get Quote</ng-template>
 
-    <!--Get Quote-->
+        <p>Deposit Date</p>
+        <mat-form-field appearance="fill">
+          <input
+            matInput
+            id="deposit_date"
+            type="date"
+            placeholder="Deposit Date"
+            required
+            formControlName="deposit_date"
+          />
+        </mat-form-field>
 
-    <mat-step>
-      <ng-template matStepLabel>Get Quote</ng-template>
+        <br />
 
-      <p>Deposit Date</p>
-      <mat-form-field appearance="fill">
-        <input
-          matInput
-          id="deposit_date"
-          type="date"
-          placeholder="Deposit Date"
-          required
-          formControlName="deposit_date"
-        />
-      </mat-form-field>
+        <mat-form-field appearance="fill">
+          <input
+            matInput
+            id="trip_cost"
+            type="number"
+            placeholder="Trip Cost"
+            required
+            formControlName="trip_cost"
+          />
+        </mat-form-field>
 
-      <br />
+        <br />
 
+        <mat-form-field appearance="fill">
+          <mat-label>Winter Sports Extension</mat-label>
+          <mat-select
+            matInput
+            id="winter_sports_extension"
+            placeholder="Winter Sports Extension"
+            required
+            formControlName="winter_sports_extension"
+          >
+            <mat-option [value]="true">Yes</mat-option>
+            <mat-option [value]="false">No</mat-option>
+          </mat-select>
+        </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <input
-          matInput
-          id="trip_cost"
-          type="number"
-          placeholder="Trip Cost"
-          required
-          formControlName="trip_cost"
-        />
-      </mat-form-field>
+        <br />
 
-      <br />
+          <button mat-stroked-button matStepperPrevious type="button">
+            Back
+          </button>
 
-      <mat-form-field appearance="fill">
-      <mat-label>Winter Sports Extension</mat-label>
-      <mat-select
-          matInput
-          id="winter_sports_extension"
-          placeholder="Winter Sports Extension"
-          required
-          formControlName="winter_sports_extension">
-          <mat-option [value]="true">Yes</mat-option>
-          <mat-option [value]="false">No</mat-option>
-      </mat-select>
-    </mat-form-field>
+        <button
+          mat-stroked-button
+          type="submit"
+          (click)="showForm()"
+          color="primary"
+        >
+          Submit
+        </button>
 
-      <br/>
+        <!-- On Submit, display Client Form Data + Quote returned from API-->
 
-    <button mat-stroked-button type="submit" (click)="showForm()">Submit</button>
+        <table
+          mat-table
+          [dataSource]="dataSource"
+          class="mat-elevation-z8"
+          *ngIf="show"
+        >
+          <!-- Total Column -->
+          <ng-container matColumnDef="total">
+            <th mat-header-cell *matHeaderCellDef>Total</th>
+            <td mat-cell *matCellDef="let quote">
+              {{ quote.total | currency: "USD":"symbol" }}
+            </td>
+          </ng-container>
 
-<!-- On Submit, display Client Form Data + Quote returned from API-->
+          <!-- Premium Column -->
+          <ng-container matColumnDef="premium">
+            <th mat-header-cell *matHeaderCellDef>Premium</th>
+            <td mat-cell *matCellDef="let quote">
+              {{ quote.premium | currency: "USD":"symbol" }}
+            </td>
+          </ng-container>
 
+          <!-- Tax Column -->
+          <ng-container matColumnDef="tax">
+            <th mat-header-cell *matHeaderCellDef>Tax</th>
+            <td mat-cell *matCellDef="let quote">
+              {{ quote.tax | currency: "USD":"symbol" }}
+            </td>
+          </ng-container>
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="show">
+          <!-- Fees Column -->
+          <ng-container matColumnDef="fees">
+            <th mat-header-cell *matHeaderCellDef>Fees</th>
+            <td mat-cell *matCellDef="let quote">
+              {{ quote.fees | currency: "USD":"symbol" }}
+            </td>
+          </ng-container>
+          <!-- currency_id Column -->
+          <ng-container matColumnDef="currency_id">
+            <th mat-header-cell *matHeaderCellDef>Currency ID</th>
+            <td mat-cell *matCellDef="let quote">{{ quote.currency_id }}</td>
+          </ng-container>
+          <!-- return_url Column -->
+          <ng-container matColumnDef="return_url">
+            <th mat-header-cell *matHeaderCellDef>Return URL</th>
+            <td mat-cell *matCellDef="let quote">{{ quote.return_url }}</td>
+          </ng-container>
+          <!-- quotation_id Column -->
+          <ng-container matColumnDef="quotation_id">
+            <th mat-header-cell *matHeaderCellDef>Quote ID</th>
+            <td mat-cell *matCellDef="let quote">{{ quote.quotation_id }}</td>
+          </ng-container>
 
-  <!--- Note that these columns can be defined in any order.
-        The actual rendered columns are set as a property on the row definition" -->
-
-  <!-- Position Column -->
-  <ng-container matColumnDef="total">
-    <th mat-header-cell *matHeaderCellDef> Total </th>
-    <td mat-cell *matCellDef="let quote"> {{quote.total | currency: 'USD' : 'symbol'}} </td>
-  </ng-container>
-
-  <!-- Name Column -->
-  <ng-container matColumnDef="premium">
-    <th mat-header-cell *matHeaderCellDef> Premium </th>
-    <td mat-cell *matCellDef="let quote"> {{quote.premium}} </td>
-  </ng-container>
-
-  <!-- Weight Column -->
-  <ng-container matColumnDef="tax">
-    <th mat-header-cell *matHeaderCellDef> Tax </th>
-    <td mat-cell *matCellDef="let quote"> {{quote.tax}} </td>
-  </ng-container>
-
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="fees">
-    <th mat-header-cell *matHeaderCellDef> Fees </th>
-    <td mat-cell *matCellDef="let quote"> {{quote.fees}} </td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
-
-
-    </mat-step>
-
-  </mat-stepper>
-</form>
-
-
-
-
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </mat-step>
+    </mat-stepper>
+  </form>
 </body>
