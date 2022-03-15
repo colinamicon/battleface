@@ -5,7 +5,7 @@ import { DestinationCountries } from '../interfaces/destination-countries';
 import { HostCountries } from '../interfaces/host-countries';
 import { Currencies } from '../interfaces/currencies';
 import { ClientForm } from '../interfaces/client-form';
-import { Quote } from '@angular/compiler';
+import { Quote } from 'src/app/interfaces/quote';
 
 @Injectable({
   providedIn: 'root',
@@ -63,4 +63,19 @@ export class QuotationService {
   }
 
   constructor(private http: HttpClient) {}
+
+
+
+    fakeQuote$(): Observable<Quote> {
+    return of
+    ({'total' : 28.43,
+      'premium': 8.43,
+      'tax' : 13,
+      'fees' : 7,
+      'currency_id':'EUR',
+      'return_url' : 'https://',
+      'quotation_id' : 42
+  })
+  }
+
 }

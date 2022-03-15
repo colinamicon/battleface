@@ -6,7 +6,7 @@ import { Currencies } from 'src/app/interfaces/currencies';
 import { DestinationCountries } from 'src/app/interfaces/destination-countries';
 import { HostCountries } from 'src/app/interfaces/host-countries';
 import { QuotationService } from 'src/app/services/quotation.service';
-import { Quote } from '@angular/compiler';
+import { Quote } from 'src/app/interfaces/quote';
 
 @Component({
   selector: 'app-form',
@@ -25,6 +25,7 @@ export class FormComponent implements OnInit {
   dc$: any; // GET Destination Countries
   hc$: any; // GET Host Countries
   c$: any; // GET Currencies
+  // fakeQuote: Quote[] = [];
 
   constructor(
     private quotationService: QuotationService,
@@ -72,13 +73,35 @@ export class FormComponent implements OnInit {
       .getCurrencies()
       .subscribe((data: Currencies[]) => (this.currencies = data));
   }
+  /**
+   * Fake Quote to simulate quotationService due to 406 Error
+   * Http Post called onSubmit below
+   */
+  displayedColumns = ['total', 'premium', 'tax', 'fees'];
+  fakeQuote: Quote[] = [
+    {
+      total: 28.43,
+      premium: 8.43,
+      tax: 13,
+      fees: 7,
+      currency_id: 'EUR',
+      return_url: 'https://',
+      quotation_id: 42,
+    },
+  ];
+  dataSource = this.fakeQuote;
+
+  // toggle form on submit click
+  public show: boolean = false;
+  showForm() {
+    this.show = !this.show;
+  }
 
   // Split ages by commas
   agesChanged(age: string) {
     let ages: string[];
     ages = age.split(',');
   }
-
 
   onSubmit(formValues: ClientForm): void {
     // log Client Form to console

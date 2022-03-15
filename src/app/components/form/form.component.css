@@ -1,8 +1,19 @@
 .mat-form-field {
   margin-top: 16px;
-  width: 33%;
 }
 
 .form-main {
   text-align: center;
+}
+
+table {
+  margin: auto;
+  width: 50%;
+  margin-top: 100px;
+  text-align: left;
+}
+
+.form-body {
+    position: relative;
+    top: 60px;
 }
