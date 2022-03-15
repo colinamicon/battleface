@@ -25,7 +25,6 @@ export class FormComponent implements OnInit {
   dc$: any; // GET Destination Countries
   hc$: any; // GET Host Countries
   c$: any; // GET Currencies
-  // fakeQuote: Quote[] = [];
 
   constructor(
     private quotationService: QuotationService,
@@ -91,7 +90,7 @@ export class FormComponent implements OnInit {
   ];
   dataSource = this.fakeQuote;
 
-  // toggle form on submit click
+  // toggle form onSubmit click
   public show: boolean = false;
   showForm() {
     this.show = !this.show;
@@ -99,8 +98,8 @@ export class FormComponent implements OnInit {
 
   // Split ages by commas
   agesChanged(age: string) {
-    let ages: string[];
-    ages = age.split(',');
+    let ages = age.split(',').map((i) => Number(i));
+    console.log(ages)
   }
 
   onSubmit(formValues: ClientForm): void {

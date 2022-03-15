@@ -17,4 +17,5 @@ table {
 .form-body {
     position: relative;
     top: 60px;
+    font-weight: bold;
 }
