@@ -69,6 +69,24 @@
         </mat-form-field>
 
         <br />
+        
+          <mat-form-field appearance="fill">
+          <mat-label>Destination Country Names</mat-label>
+          <mat-select
+            matInput
+            id="destination_country_ids"
+            type="text"
+            placeholder="Destination Country IDs"
+            required
+            formControlName="destination_country_ids"
+          >
+            <mat-option *ngFor="let dest of destinationCountries" [value]="dest.name">
+              {{ dest.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <br />
 
         <!--Grouped *ngFor-->
         <!-- <mat-form-field appearance="fill">
