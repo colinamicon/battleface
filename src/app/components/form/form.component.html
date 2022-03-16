@@ -107,6 +107,7 @@
             placeholder="Destination Country IDs"
             required
             formControlName="destination_country_ids"
+            multiple
           >
             <mat-option *ngFor="let dest of destinationCountries" [value]="dest.name">
               {{ dest.name }}
